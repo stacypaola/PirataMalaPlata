@@ -1,0 +1,110 @@
+[gd_scene load_steps=13 format=3 uid="uid://tfjna626ybr"]
+
+[ext_resource type="Texture2D" uid="uid://bb0tjxgyjqhh2" path="res://assets/sprites/treasure_hunters/the_crusty_crew/sprites/fantasma/01_idle/01_idle.png" id="1_8lgmc"]
+[ext_resource type="Texture2D" uid="uid://dlwdrgnyxfde4" path="res://assets/sprites/treasure_hunters/the_crusty_crew/sprites/fantasma/01_idle/02_idle.png" id="2_83gvg"]
+[ext_resource type="Texture2D" uid="uid://ckugu7etcncmt" path="res://assets/sprites/treasure_hunters/the_crusty_crew/sprites/fantasma/01_idle/03_idle.png" id="3_ow4dv"]
+[ext_resource type="Texture2D" uid="uid://dmk74t2xqy432" path="res://assets/sprites/treasure_hunters/the_crusty_crew/sprites/fantasma/01_idle/04_idle.png" id="4_h78mx"]
+[ext_resource type="Texture2D" uid="uid://cakcbo1wc8jso" path="res://assets/sprites/treasure_hunters/the_crusty_crew/sprites/fantasma/01_idle/05_idle.png" id="5_0ex67"]
+[ext_resource type="Texture2D" uid="uid://bebjtsoyb18b8" path="res://assets/sprites/treasure_hunters/the_crusty_crew/sprites/fantasma/01_idle/07_idle.png" id="6_ue1of"]
+[ext_resource type="Texture2D" uid="uid://n8ma0pjeefca" path="res://assets/sprites/treasure_hunters/the_crusty_crew/sprites/fantasma/01_idle/08_idle.png" id="7_1b3yc"]
+[ext_resource type="Texture2D" uid="uid://tkc5ry8vl7qu" path="res://assets/sprites/treasure_hunters/the_crusty_crew/sprites/fantasma/01_idle/09_idle.png" id="8_6podt"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7y3s5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_8lgmc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_83gvg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ow4dv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_h78mx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_0ex67")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_0ex67")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ue1of")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_1b3yc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_6podt")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gebeo"]
+size = Vector2(45, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6htod"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"attack_effect",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a4t7r"]
+size = Vector2(42, 28)
+
+[node name="Fantasma" type="CharacterBody2D"]
+
+[node name="FantasmaAnimacion" type="AnimatedSprite2D" parent="."]
+position = Vector2(52, 35)
+scale = Vector2(0.084, 0.056)
+sprite_frames = SubResource("SpriteFrames_7y3s5")
+animation = &"idle"
+frame_progress = 0.387846
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(50.5, 28)
+shape = SubResource("RectangleShape2D_gebeo")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6htod")
+animation = &"idle"
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(48, 25)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(4, 10)
+shape = SubResource("RectangleShape2D_a4t7r")
+
+[node name="RayCastTerrain" type="RayCast2D" parent="Area2D"]
+position = Vector2(-19, -4)
+scale = Vector2(0.5, 0.5)
+
+[node name="RayCastWall" type="RayCast2D" parent="Area2D"]
+position = Vector2(-17, 10)
+scale = Vector2(0.5, 0.5)
+target_position = Vector2(-5, 0)
+
+[node name="RayCastVisionLeft" type="RayCast2D" parent="Area2D"]
+position = Vector2(-20, 10)
+scale = Vector2(0.5, 0.5)
+target_position = Vector2(-300, 0)
+
+[node name="RayCastVisionRight" type="RayCast2D" parent="Area2D"]
+position = Vector2(25, 11)
+scale = Vector2(0.5, 0.5)
+target_position = Vector2(300, 0)
