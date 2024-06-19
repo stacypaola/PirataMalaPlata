@@ -68,18 +68,18 @@ size = Vector2(42, 28)
 
 [node name="Fantasma" type="CharacterBody2D"]
 
-[node name="FantasmaAnimacion" type="AnimatedSprite2D" parent="."]
+[node name="FantasmaAnimation" type="AnimatedSprite2D" parent="."]
 position = Vector2(52, 35)
 scale = Vector2(0.084, 0.056)
 sprite_frames = SubResource("SpriteFrames_7y3s5")
 animation = &"idle"
-frame_progress = 0.387846
+frame_progress = 0.911992
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(50.5, 28)
 shape = SubResource("RectangleShape2D_gebeo")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="FantasmaEffect" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_6htod")
 animation = &"idle"
 
